@@ -7,7 +7,7 @@ on:
     paths:
       - 'layers/**'
       - 'lambda_functions/**'
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/deploy.yaml'
       - 'aws-lambda-layer/**'
 
 jobs:
@@ -25,6 +25,10 @@ jobs:
         run: |
           cd layers/my_utils
           zip -r ../../my_utils.zip .
+
+      - name: Move zipped layer to expected path
+        run: mv my_utils.zip layers/
+    
 
       - name: Zip Lambda Function
         run: |
