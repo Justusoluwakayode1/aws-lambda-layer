@@ -1,0 +1,32 @@
+# Python
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.env
+
+# VS Code and editor folders
+.vscode/
+.idea/
+*.swp
+
+# Layer and Lambda zip packages
+layers/*.zip
+lambda_functions/*.zip
+
+# Terraform
+*.tfstate
+.tfstate.
+.terraform/
+terraform.tfvars
+.crash
+*.log
+*.bak
+
+# GitHub Actions artifacts (if any)
+.github/workflows/*.log
+
+# Mac and Linux system files
+.DS_Store
+Thumbs.db
