@@ -5,13 +5,13 @@ provider "aws" {
 resource "aws_lambda_layer_version" "lambda_layer" {
   layer_name          = var.layer_name
   compatible_runtimes = ["python3.12"]
-  filename            = "${path.module}/../layers/${var.layer_zip_file}"
-  source_code_hash    = filebase64sha256("${path.module}/../layers/${var.layer_zip_file}")
+  filename            = "${path.module}/layers/${var.layer_zip_file}"
+  source_code_hash    = filebase64sha256("${path.module}/layers/${var.layer_zip_file}")
 }
 
 resource "aws_lambda_function" "my_lambda" {
   function_name = var.lambda_name
-  filename      = "${path.module}/../lambda_functions/${var.lambda_zip_file}"
+  filename      = "${path.module}/lambda_functions/${var.lambda_zip_file}"
   handler       = "handler.lambda_handler"
   runtime       = "python3.12"
   role          = aws_iam_role.lambda_exec.arn
