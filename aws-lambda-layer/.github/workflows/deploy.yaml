@@ -2,6 +2,8 @@ name: Deploy Lambda + Layer
 
 on:
   push:
+    branches:
+      - main 
     paths:
       - 'layers/**'
       - 'lambda_functions/**'
