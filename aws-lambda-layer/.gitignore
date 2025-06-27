@@ -24,8 +24,7 @@ terraform.tfvars
 *.log
 *.bak
 
-# GitHub Actions artifacts (if any)
-.github/workflows/*.log
+
 
 # Mac and Linux system files
 .DS_Store
