@@ -24,13 +24,23 @@ jobs:
       - name: Zip Lambda Layer
         run: |
           mkdir -p python/my_utils
-          cp -r layers/my_utils/* python/my_utils/
+          cp -r layers/my_utils/*.py python/my_utils/
           zip -r my_utils.zip python
           mv my_utils.zip layers/
+          rm -rf python  # clean up temp folder
+
+
+
+      - name: Check Lambda Layer ZIP Exists
+        run: |
+          ls -lh layers/
+          test -f layers/my_utils.zip && echo "✅ Layer ZIP exists" || (echo "❌ Layer ZIP missing" && exit 1)
+
           
 
-      - name: Move zipped layer to expected path
-        run: mv my_utils.zip layers/
+      - name: Debug: List contents of my_utils.zip
+        run: unzip -l layers/my_utils.zip
+
     
 
       - name: Zip Lambda Function
