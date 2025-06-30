@@ -33,7 +33,12 @@ jobs:
       - name: Zip Lambda Function
         run: |
           cd lambda_functions
-          zip -r ../lambda_function.zip .
+          zip -r lambda_function.zip .
+
+      - name: Check Lambda Function Zip Exists
+        run: |
+          ls -lh lambda_functions/
+          test -f lambda_functions/lambda_function.zip && echo "✅ Lambda ZIP exists" || (echo "❌ Lambda ZIP missing" && exit 1 )
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
