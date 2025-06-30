@@ -37,10 +37,8 @@ jobs:
           test -f layers/my_utils.zip && echo "✅ Layer ZIP exists" || (echo "❌ Layer ZIP missing" && exit 1)
 
           
-
-      - name: Debug: List contents of my_utils.zip
+      - name: Debug: List all contents of my_utils.zip
         run: unzip -l layers/my_utils.zip
-
     
 
       - name: Zip Lambda Function
